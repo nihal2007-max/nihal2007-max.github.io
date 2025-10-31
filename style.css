@@ -167,3 +167,112 @@ footer {
     color: #fff;
     margin-top: 20px;
 }
+/* --- Animation Code Starts Here --- */
+
+/* 1. KEYFRAME ANIMATIONS (For load-in effects) */
+
+/* Define a "fade in and slide up" animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px); /* Start 30px down */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* End at its normal position */
+    }
+}
+
+/* Define a "subtle pulse" for the profile picture */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    50% {
+        transform: scale(1.03); /* Slightly larger */
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Bigger shadow */
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+}
+
+/* 2. APPLYING ANIMATIONS */
+
+/* Apply the "fadeInUp" animation to every card section */
+.card {
+    /* existing styles... */
+    
+    /* New animation properties: */
+    animation-name: fadeInUp;
+    animation-duration: 0.8s; /* How long it takes */
+    animation-timing-function: ease-out; /* How the animation progresses */
+    animation-fill-mode: backwards; /* Ensures it starts from 'from' state */
+}
+
+/* We need to hide the cards before the animation starts 
+   to prevent a "flash" of un-styled content.
+*/
+main {
+    overflow: hidden; /* This helps contain the animations */
+}
+
+/* Optional: Apply the 'pulse' to your profile picture.
+   This will make it pulse gently every 5 seconds.
+*/
+.profile-pic {
+    /* existing styles... */
+    
+    /* New animation properties: */
+    animation-name: pulse;
+    animation-duration: 5s;     /* 5 seconds per pulse cycle */
+    animation-iteration-count: infinite; /* Loop forever */
+}
+
+
+/* 3. TRANSITIONS (For smooth hover effects) */
+
+/* Make all links and buttons change color smoothly */
+a, 
+button {
+    transition: all 0.3s ease; /* Animate all properties over 0.3s */
+}
+
+/* Add a smooth "lift" effect to project cards on hover */
+.project {
+    /* existing styles... */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project:hover {
+    transform: translateY(-5px); /* Lift up 5px */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Make nav links change color more clearly */
+nav ul li a:hover {
+    color: #f0a500; /* This was already here */
+    transform: scale(1.1); /* Add a slight zoom */
+}
+
+/* Make skill tags change on hover */
+#skills li {
+    /* existing styles... */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#skills li:hover {
+    background-color: #f0a500; /* Highlight color */
+    transform: scale(1.05);
+}
+
+/* Make the contact button more interactive */
+#contact-form button:hover {
+    background-color: #f0a500; /* Highlight color */
+    transform: scale(1.02); /* Slightly larger */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* --- Animation Code Ends Here --- */
